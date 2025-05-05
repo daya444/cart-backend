@@ -15,7 +15,7 @@ import adminOrderRoutes from "./routes/adminOrderRoutes.js";
 
 const app = express();
 
-// Enable CORS with the necessary settings
+// Allow specific origins
 app.use(cors({
   origin: [
     "https://cart-frontend-1sdxbrwcd-dayas-projects-e43cf763.vercel.app",
@@ -23,7 +23,7 @@ app.use(cors({
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: false // If you're not using cookies or sessions
+  credentials: false // If you're not using cookies or authorization headers, set this to false
 }));
 
 app.use(express.json());
@@ -50,7 +50,15 @@ app.use("/api/admin/users", adminRoutes);
 app.use("/api/admin/products", adminProductRoutes);
 app.use("/api/admin/orders", adminOrderRoutes);
 
-
+// Preflight request handling (for OPTIONS requests)
+app.options("*", cors({
+  origin: [
+    "https://cart-frontend-1sdxbrwcd-dayas-projects-e43cf763.vercel.app",
+    "https://cart-frontend-three.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
