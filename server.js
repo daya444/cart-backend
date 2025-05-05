@@ -16,14 +16,14 @@ import adminOrderRoutes from "./routes/adminOrderRoutes.js"
 
 const app = express();
 app.use(express.json());
-const allowedOrigins = [
-    "https://cart-frontend-1sdxbrwcd-dayas-projects-e43cf763.vercel.app"
-  ];
-  
-  app.use(cors({
-    origin: allowedOrigins,
-    credentials: true, // allow cookies and auth headers
+app.use(cors({
+    origin: [
+      "https://cart-frontend-1sdxbrwcd-dayas-projects-e43cf763.vercel.app",
+      "https://cart-frontend-three.vercel.app"
+    ],
+    credentials: true
   }));
+  
   
 
 dotenv.config()
