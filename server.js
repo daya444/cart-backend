@@ -1,5 +1,5 @@
 import express from "express";
-import cors from 'cors';
+import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -15,15 +15,15 @@ import adminOrderRoutes from "./routes/adminOrderRoutes.js";
 
 const app = express();
 
-// Handle preflight requests and CORS for all routes
+// Allow specific origins
 app.use(cors({
   origin: [
     "https://cart-frontend-1sdxbrwcd-dayas-projects-e43cf763.vercel.app",
     "https://cart-frontend-three.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],  // Allow any headers you may need
- 
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: false // If you're not using cookies or authorization headers, set this to false
 }));
 
 app.use(express.json());
@@ -50,7 +50,7 @@ app.use("/api/admin/users", adminRoutes);
 app.use("/api/admin/products", adminProductRoutes);
 app.use("/api/admin/orders", adminOrderRoutes);
 
-// Preflight request handler (especially for OPTIONS requests)
+// Preflight request handling (for OPTIONS requests)
 app.options("*", cors({
   origin: [
     "https://cart-frontend-1sdxbrwcd-dayas-projects-e43cf763.vercel.app",
