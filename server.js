@@ -15,14 +15,17 @@ import adminOrderRoutes from "./routes/adminOrderRoutes.js"
 
 
 const app = express();
-app.use(express.json());
+
 app.use(cors({
     origin: [
       "https://cart-frontend-1sdxbrwcd-dayas-projects-e43cf763.vercel.app",
       "https://cart-frontend-three.vercel.app"
-    ],
-    credentials: true
+    ]
   }));
+  
+
+app.use(express.json());
+
   
   
 
