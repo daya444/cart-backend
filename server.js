@@ -16,7 +16,15 @@ import adminOrderRoutes from "./routes/adminOrderRoutes.js"
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = [
+    "https://cart-frontend-1sdxbrwcd-dayas-projects-e43cf763.vercel.app"
+  ];
+  
+  app.use(cors({
+    origin: allowedOrigins,
+    credentials: true, // allow cookies and auth headers
+  }));
+  
 
 dotenv.config()
 connectDB()
