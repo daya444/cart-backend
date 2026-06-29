@@ -795,7 +795,7 @@ export const products = [
     },
     {
       name: "Casual T-Shirt",
-      description:
+      description: 
         "A soft, breathable casual t-shirt with a classic fit. Features a round neckline and short sleeves, perfect for everyday wear.",
       price: 25,
       discountPrice: 20,

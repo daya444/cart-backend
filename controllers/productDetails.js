@@ -118,7 +118,7 @@ export const  filteredProducts = async (req,res)=>{
 
    try {
     const {collections,sizes,colors,gender,minPrice,maxPrice,sortBy,search,category,material,brand,limit} = req.query
-
+   console.log(collections,"coll")
     let query ={}
 
     //filter logic
@@ -160,7 +160,7 @@ if (search) {
     ];
 }
 
-console.log("Final Query:", JSON.stringify(query, null, 2));
+
 
 
 let sort = {}
